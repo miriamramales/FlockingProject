@@ -20,16 +20,22 @@ git add *
 git push
 
 
+
 Here are the Methods we used in this project. 
 
 #Methods
 
-Average position ()
+Average position (). Determines the average position of each boid and returns theta. 
 
-Average direction ()
+Average direction (). Determines the average direction of each boid and returns theta. 
 
-MoveAway()
+MoveAway(). Determines the 
 
 FinalDirection()
+
+
+
+
+
 
  
