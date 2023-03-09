@@ -174,6 +174,14 @@ public class Circle extends JPanel {
     public void setXPosition(int x){
         this.xy.x = x;
     }
+    
+    public int getDirectionX (){
+        return this.direction.x;
+    }
+    public int getDirectionY (){
+        return this.direction.y;
+    }
+
 
 
 }

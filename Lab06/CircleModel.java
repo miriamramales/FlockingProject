@@ -168,8 +168,12 @@ public class CircleModel extends Thread {
         yAverage = sumY / count;
 
         for(int j = 0; j < count ; j++){
-            circles.get(j).setXPosition(xAverage);
-            circles.get(j).setYPosition(yAverage);
+            double changeX = circles.get(j).getXY().x - xAverage;
+            double changeY = circles.get(j).getXY().y - yAverage;
+            double hyp = Math.pow((Math.pow(changeX,2) + Math.pow(changeY, 2)), 0.5);
+            circles.get(j).setDirectionX((int)(circles.get(j).getDirectionX() + hyp));
+            circles.get(j).setDirectionY((int)(circles.get(j).getDirectionY() + hyp));
+
         }
 
     }
