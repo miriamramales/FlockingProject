@@ -106,14 +106,8 @@ public class SimulationGUI extends JFrame {
         Event e = new Event();
         this.sizeSlider.addChangeListener(e);
 
-    //Testing checkbox
-        this.checkColor.setBounds(400, 40, 120, 40);
-        this.getContentPane().add(this.checkColor);
-        this.checkColor.addItemListener();
+    
 
-        this.checkDirection.setBounds(400, 70, 140, 40);
-        this.getContentPane().add(this.checkDirection);
-        this.checkDirection.addItemListener(this);
     }
 
     /**

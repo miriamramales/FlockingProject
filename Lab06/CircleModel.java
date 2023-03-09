@@ -43,6 +43,7 @@ public class CircleModel extends Thread {
                 advanceCircles();
                 checkOverlap();
                 simulation.getContentPane().repaint();
+                AveragePosition();
             }
             try {
                 Thread.sleep(stepSize);
@@ -152,6 +153,25 @@ public class CircleModel extends Thread {
     public void changeColor(Circle circle, Circle other){
         circle.randomColor();
         other.setColor(circle.color());
+    }
+
+    public void AveragePosition(){
+        int xAverage;
+        int yAverage;
+        int sumX = 0;
+        int sumY = 0;
+        for(int i =0; i < count;i++){
+            sumX = circles.get(i).getXY().x;
+            sumY = circles.get(i).getXY().y;
+        }
+        xAverage = sumX / count;
+        yAverage = sumY / count;
+
+        for(int j = 0; j < count ; j++){
+            circles.get(j).setXPosition(xAverage);
+            circles.get(j).setYPosition(yAverage);
+        }
+
     }
 
 
