@@ -30,9 +30,9 @@ Average position (). Determines the average position of each boid and returns th
 
 Average direction (). Determines the average direction of each boid and returns theta. 
 
-MoveAway(). Determines the 
+MoveAway(). Moves close neighbors away and returns theta. 
 
-FinalDirection()
+FinalDirection(). Assigns a new final direction by adding up the position, direction, and move away. 
 
 
 
