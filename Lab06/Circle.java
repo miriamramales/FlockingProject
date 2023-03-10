@@ -24,7 +24,7 @@ public class Circle extends JPanel {
     private final int yMAXRANGE = 740;
 
     /** Fixed size */
-    private int radius = 30;
+    private int radius = 10;
     
     /** Color specified in RGB */
     private Color color = new Color(10, 10, 10);
@@ -169,4 +169,10 @@ public class Circle extends JPanel {
         this.color = color;
     }
 
+        public int getYDirection() {
+            return this.direction.y;
+        }
+        public int getXDirection(){
+            return this.direction.x;
+        }
 }

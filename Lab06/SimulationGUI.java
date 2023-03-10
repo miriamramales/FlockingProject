@@ -32,10 +32,7 @@ public class SimulationGUI extends JFrame {
     private final JButton play = new JButton("Play");
     private final JButton restart = new JButton("Set Up");
 
-    private final JSlider sizeSlider = new JSlider(JSlider.HORIZONTAL,20,60,30);
-
-    private final JCheckBox checkDirection = new JCheckBox("Change direction");
-    private final JCheckBox checkColor = new JCheckBox("Change color");
+   
 
 
     private ArrayList<Circle> circles;
@@ -97,39 +94,14 @@ public class SimulationGUI extends JFrame {
         this.stop.addActionListener(control);
         this.getContentPane().add(this.stop);
  
-        //place the size slider
-        this.sizeSlider.setBounds(400, 100,200,60);
-        this.sizeSlider.setMajorTickSpacing(10);
-        this.sizeSlider.setPaintTicks(true);
-        this.sizeSlider.setPaintLabels(true);
-        this.getContentPane().add(this.sizeSlider);
-        Event e = new Event();
-        this.sizeSlider.addChangeListener(e);
+        
 
-    //Testing checkbox
-        this.checkColor.setBounds(400, 40, 120, 40);
-        this.getContentPane().add(this.checkColor);
-        this.checkColor.addItemListener();
-
-        this.checkDirection.setBounds(400, 70, 140, 40);
-        this.getContentPane().add(this.checkDirection);
-        this.checkDirection.addItemListener(this);
-    }
+    
 
     /**
      * 
      */
-    public class Event implements ChangeListener{
-       
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            
-            int radius = sizeSlider.getValue();
-            for(int i = 0; i < circles.size();i++){
-                circles.get(i).changeSize(radius);
-            }
-            
-        }
+    
     }
 
     
