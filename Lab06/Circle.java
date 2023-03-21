@@ -175,6 +175,21 @@ public class Circle extends JPanel {
     public void setColor(Color color){
         this.color = color;
     }
+    public void setYPosition(int y){
+        this.xy.y = y;
+    }
+    public void setXPosition(int x){
+        this.xy.x = x;
+    }
+    
+    public int getDirectionX (){
+        return this.direction.x;
+    }
+    public int getDirectionY (){
+        return this.direction.y;
+    }
+
+
 
         public int getYDirection() {
             return this.direction.y;
