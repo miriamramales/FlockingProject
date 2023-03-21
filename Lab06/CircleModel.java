@@ -161,8 +161,6 @@ public class CircleModel extends Thread {
     }
 
 
-    }
-
     /** Calculates the average position of the circles */
     public void AveragePosition(){
         int xAverage;
@@ -187,4 +185,40 @@ public class CircleModel extends Thread {
 
     }
 
+    public void AverageDirection() {
+        int xAverage;
+        int yAverage;
+        int posXAverage;
+        int posYAverage;
+        int sumX = 0;
+        int sumY = 0;
+        int posY = 0;
+        int posX = 0;
+        for (int i = 0; i < count; i++) {
+            sumX += circles.get(i).getXDirection();
+            sumY += circles.get(i).getYDirection();
+            posX += circles.get(i).getXY().x;
+            posY += circles.get(i).getXY().y;
+        }
+        posXAverage = posX / count;
+        posYAverage = posY / count;
+        xAverage = sumX / count;
+        yAverage = sumY / count;
+
+
+        for (int j = 0; j < count; j++) {
+           circles.get(j).setDirectionX(xAverage * 1+ circles.get(j).getXDirection());
+             circles.get(j).setDirectionY(yAverage * 1+ circles.get(j).getYDirection());
+           int dX = posXAverage - circles.get(j).getXY().x;
+           int dY= posYAverage - circles.get(j).getXY().y;
+           circles.get(j).setDirectionX(dX+ circles.get(j).getXDirection());
+            circles.get(j).setDirectionY(dY+ circles.get(j).getYDirection());
+            System.out.println(posXAverage + " "  + posYAverage + " " + dX + " " + dY);
+        }
+       /*for (int i = 0; i < count; i++) {
+            for (int j = i + 1; j < count; j++) {
+                if (circles.get(i).setDirectionX(circles.get(j))) {
+                }*/
+
+}
 }
