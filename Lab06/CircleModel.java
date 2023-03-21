@@ -195,4 +195,29 @@ public class CircleModel extends Thread {
                 }*/
 
     }
+
+    /** Calculates the average position of the circles */
+    public void AveragePosition(){
+        int xAverage;
+        int yAverage;
+        int sumX = 0;
+        int sumY = 0;
+        for(int i =0; i < count;i++){
+            sumX = circles.get(i).getXY().x;
+            sumY = circles.get(i).getXY().y;
+        }
+        xAverage = sumX / count;
+        yAverage = sumY / count;
+
+        for(int j = 0; j < count ; j++){
+            double changeX = circles.get(j).getXY().x - xAverage;
+            double changeY = circles.get(j).getXY().y - yAverage;
+            double hyp = Math.pow((Math.pow(changeX,2) + Math.pow(changeY, 2)), 0.5);
+            circles.get(j).setDirectionX((int)(circles.get(j).getDirectionX() + hyp));
+            circles.get(j).setDirectionY((int)(circles.get(j).getDirectionY() + hyp));
+
+        }
+
+    }
+
 }
