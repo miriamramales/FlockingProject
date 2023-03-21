@@ -32,7 +32,10 @@ public class SimulationGUI extends JFrame {
     private final JButton play = new JButton("Play");
     private final JButton restart = new JButton("Set Up");
 
-   
+    private final JSlider coheranceSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider seperationSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider alignmentSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider visualRangeSlide = new JSlider(JSlider.HORIZONTAL,10,200,100);
 
 
     private ArrayList<Circle> circles;
@@ -93,15 +96,36 @@ public class SimulationGUI extends JFrame {
         this.stop.setBounds(150, 100, 120, 30);
         this.stop.addActionListener(control);
         this.getContentPane().add(this.stop);
- 
-        
+
+        //place the coherance slider
+        this.coheranceSlide.setBounds(580, 20,180,40);
+        //this.coheranceSlide.setMajorTickSpacing(50);
+        //this.coheranceSlide.setPaintTicks(true);
+        //this.coheranceSlide.setPaintLabels(true);
+        this.getContentPane().add(this.coheranceSlide);
+        this.coheranceSlide.addChangeListener(control);
+
+        //place seperation slider
+        this.seperationSlide.setBounds(580, 90,180,40);
+        //this.seperationSlide.setMajorTickSpacing(50);
+        //this.seperationSlide.setPaintTicks(true);
+        //this.seperationSlide.setPaintLabels(true);
+        this.getContentPane().add(this.seperationSlide);
+        this.seperationSlide.addChangeListener(control);
+
+        //place alignment slider
+        this.alignmentSlide.setBounds(360, 20,180,40);
+        this.getContentPane().add(this.alignmentSlide);
+        this.alignmentSlide.addChangeListener(control);
+
+        //place alignment slider
+        this.visualRangeSlide.setBounds(360, 90,180,40);
+        this.getContentPane().add(this.visualRangeSlide);
+        this.visualRangeSlide.addChangeListener(control);
+
+    }
 
     
-
-    /**
-     * 
-     */
-       }
 
     
 }
