@@ -155,6 +155,7 @@ public class CircleModel extends Thread {
         other.setColor(circle.color());
     }
 
+    /** Calculates the average position of the circles */
     public void AveragePosition(){
         int xAverage;
         int yAverage;
