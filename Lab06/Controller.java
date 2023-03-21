@@ -4,7 +4,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.text.DecimalFormat;
+import java.util.EventListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -12,7 +16,7 @@ import java.awt.event.ItemListener;
  * The controller class for the temp converter application.
  * @author Amy Larson (with Erik Steinmetz)
  */
-public class Controller implements ActionListener, ItemListener {
+public class Controller implements ActionListener, ChangeListener {
     
 
     /** The model of the circles. */
@@ -55,20 +59,14 @@ public class Controller implements ActionListener, ItemListener {
 
         else if( ae.getActionCommand().equals( "Play")) {
             model.play();
-        //TODO: testing checkbox
-            if(ae.getActionCommand().equals("Change color")){
-                model.setChangeColor(true);
-            }
-            if (ae.getActionCommand().equals("Change direction")){
-                model.setChangeDirection(true);     
-            }
+        
         }
     }
 
     @Override
-    public void itemStateChanged(ItemEvent e) {
+    public void stateChanged(ChangeEvent e) {
         // TODO Auto-generated method stub
-        if (e.getSource() == view.c
+        throw new UnsupportedOperationException("Unimplemented method 'stateChanged'");
     }
 
 

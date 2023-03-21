@@ -26,6 +26,8 @@ public class CircleModel extends Thread {
 
     private boolean changeDirection = false;
 
+    private int seeRadius;
+
     /** Default constructor. */
     public CircleModel() {
         // All circels that might appear in the graphics window are created, but are not visible.
@@ -152,6 +154,24 @@ public class CircleModel extends Thread {
     public void changeColor(Circle circle, Circle other){
         circle.randomColor();
         other.setColor(circle.color());
+    }
+
+    /*TODO: create a function that creates a list of this circle's neighbors
+    to avoid repetive code of nested for-loops
+    */
+    public ArrayList neighbors(){
+        return null;
+    }
+
+    public void cohesion(){
+        for(int i = 0; i < count; i++){
+            for(int j = i+1; j < count; j++){
+                if ((circles.get(i).distance(circles.get(j))) <= seeRadius){
+
+                }
+            }
+            
+        }
     }
 
 

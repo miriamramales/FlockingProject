@@ -153,6 +153,13 @@ public class Circle extends JPanel {
     
     }
 
+    public double distance(Circle other){
+        double changeX = this.xy.x - other.xy.x;
+        double changeY = this.xy.y - other.xy.y;
+        return Math.pow((Math.pow(changeX,2) + Math.pow(changeY, 2)), 0.5);
+        
+    }
+
     public void changeSize(int radius){
         this.radius = radius;
     }

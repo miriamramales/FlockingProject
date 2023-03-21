@@ -34,8 +34,10 @@ public class SimulationGUI extends JFrame {
 
     private final JSlider sizeSlider = new JSlider(JSlider.HORIZONTAL,20,60,30);
 
-    private final JCheckBox checkDirection = new JCheckBox("Change direction");
-    private final JCheckBox checkColor = new JCheckBox("Change color");
+    private final JSlider coheranceSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider seperationSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider alignmentSlide = new JSlider(JSlider.HORIZONTAL,1,50,25);
+    private final JSlider visualRangeSlide = new JSlider(JSlider.HORIZONTAL,10,200,100);
 
 
     private ArrayList<Circle> circles;
@@ -96,41 +98,36 @@ public class SimulationGUI extends JFrame {
         this.stop.setBounds(150, 100, 120, 30);
         this.stop.addActionListener(control);
         this.getContentPane().add(this.stop);
- 
-        //place the size slider
-        this.sizeSlider.setBounds(400, 100,200,60);
-        this.sizeSlider.setMajorTickSpacing(10);
-        this.sizeSlider.setPaintTicks(true);
-        this.sizeSlider.setPaintLabels(true);
-        this.getContentPane().add(this.sizeSlider);
-        Event e = new Event();
-        this.sizeSlider.addChangeListener(e);
 
-    //Testing checkbox
-        this.checkColor.setBounds(400, 40, 120, 40);
-        this.getContentPane().add(this.checkColor);
-        this.checkColor.addItemListener();
+        //place the coherance slider
+        this.coheranceSlide.setBounds(580, 20,180,40);
+        //this.coheranceSlide.setMajorTickSpacing(50);
+        //this.coheranceSlide.setPaintTicks(true);
+        //this.coheranceSlide.setPaintLabels(true);
+        this.getContentPane().add(this.coheranceSlide);
+        this.coheranceSlide.addChangeListener(control);
 
-        this.checkDirection.setBounds(400, 70, 140, 40);
-        this.getContentPane().add(this.checkDirection);
-        this.checkDirection.addItemListener(this);
+        //place seperation slider
+        this.seperationSlide.setBounds(580, 90,180,40);
+        //this.seperationSlide.setMajorTickSpacing(50);
+        //this.seperationSlide.setPaintTicks(true);
+        //this.seperationSlide.setPaintLabels(true);
+        this.getContentPane().add(this.seperationSlide);
+        this.seperationSlide.addChangeListener(control);
+
+        //place alignment slider
+        this.alignmentSlide.setBounds(360, 20,180,40);
+        this.getContentPane().add(this.alignmentSlide);
+        this.alignmentSlide.addChangeListener(control);
+
+        //place alignment slider
+        this.visualRangeSlide.setBounds(360, 90,180,40);
+        this.getContentPane().add(this.visualRangeSlide);
+        this.visualRangeSlide.addChangeListener(control);
+
     }
 
-    /**
-     * 
-     */
-    public class Event implements ChangeListener{
-       
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            
-            int radius = sizeSlider.getValue();
-            for(int i = 0; i < circles.size();i++){
-                circles.get(i).changeSize(radius);
-            }
-            
-        }
-    }
+    
 
     
 }
