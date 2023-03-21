@@ -101,8 +101,7 @@ public class SimulationGUI extends JFrame {
     /**
      * 
      */
-    
-    }
+       }
 
     
 }

@@ -157,12 +157,12 @@ public class Circle extends JPanel {
         this.radius = radius;
     }
 
-    public void setDirectionY(int d){
-        this.direction.y = d;
+    public void setDirectionY(double d){
+        this.direction.y = (int)d;
     }
 
-    public void setDirectionX(int d){
-        this.direction.x = d;
+    public void setDirectionX(double d){
+        this.direction.x = (int)d;
     }
 
     public void setColor(Color color){
