@@ -12,6 +12,8 @@ public class Circle extends JPanel {
 
     /** Unique id (for debugging) */
     static int nextId = 0;
+
+    
     static int getId() {
         return nextId++;
     }
