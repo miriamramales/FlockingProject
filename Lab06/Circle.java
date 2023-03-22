@@ -12,6 +12,8 @@ public class Circle extends JPanel {
 
     /** Unique id (for debugging) */
     static int nextId = 0;
+
+    
     static int getId() {
         return nextId++;
     }
@@ -153,6 +155,13 @@ public class Circle extends JPanel {
     
     }
 
+    public double distance(Circle other){
+        double changeX = this.xy.x - other.xy.x;
+        double changeY = this.xy.y - other.xy.y;
+        return Math.pow((Math.pow(changeX,2) + Math.pow(changeY, 2)), 0.5);
+        
+    }
+
     public void changeSize(int radius){
         this.radius = radius;
     }
@@ -168,6 +177,21 @@ public class Circle extends JPanel {
     public void setColor(Color color){
         this.color = color;
     }
+    public void setYPosition(int y){
+        this.xy.y = y;
+    }
+    public void setXPosition(int x){
+        this.xy.x = x;
+    }
+    
+    public int getDirectionX (){
+        return this.direction.x;
+    }
+    public int getDirectionY (){
+        return this.direction.y;
+    }
+
+
 
         public int getYDirection() {
             return this.direction.y;

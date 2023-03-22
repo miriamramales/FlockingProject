@@ -27,6 +27,8 @@ public class CircleModel extends Thread {
 
     private boolean changeDirection = false;
 
+    private int seeRadius;
+
     /** Default constructor. */
     public CircleModel() {
         // All circels that might appear in the graphics window are created, but are not
@@ -45,6 +47,7 @@ public class CircleModel extends Thread {
                 advanceCircles();
                 checkOverlap();
                 simulation.getContentPane().repaint();
+                AveragePosition();
                 AverageDirection();
             }
             try {
@@ -157,6 +160,33 @@ public class CircleModel extends Thread {
         other.setColor(circle.color());
     }
 
+    /** Calculates the average position of the circles */
+    public void AveragePosition() {
+        int xAverage;
+        int yAverage;
+        int sumX = 0;
+        int sumY = 0;
+        for (int i = 0; i < count; i++) {
+            sumX = circles.get(i).getXY().x;
+            sumY = circles.get(i).getXY().y;
+        }
+        xAverage = sumX / count;
+        yAverage = sumY / count;
+
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < count; j++) {
+                if (circles.get(j).distance(circles.get(i)) <= seeRadius) {
+                    double changeX = circles.get(j).getXY().x - xAverage;
+                    double changeY = circles.get(j).getXY().y - yAverage;
+                    double hyp = Math.pow((Math.pow(changeX, 2) + Math.pow(changeY, 2)), 0.5);
+                    circles.get(j).setDirectionX((int) (circles.get(j).getDirectionX() + hyp));
+                    circles.get(j).setDirectionY((int) (circles.get(j).getDirectionY() + hyp));
+                }
+            }
+        }
+
+    }
+
     public void AverageDirection() {
         int xAverage;
         int yAverage;
@@ -177,21 +207,19 @@ public class CircleModel extends Thread {
         xAverage = sumX / count;
         yAverage = sumY / count;
 
-
-        for (int j = 0; j < count; j++) {
-           circles.get(j).setDirectionX(xAverage * .1+ circles.get(j).getXDirection());
-             circles.get(j).setDirectionY(yAverage *.1+ circles.get(j).getYDirection());
-           int dX = posXAverage - circles.get(j).getXY().x;
-           int dY= posYAverage - circles.get(j).getXY().y;
-           circles.get(j).setDirectionX(dX+ circles.get(j).getXDirection());
-            circles.get(j).setDirectionY(dY+ circles.get(j).getYDirection());
-            System.out.println(posXAverage + " "  + posYAverage + " " + dX + " " + dY);
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < count; j++) {
+                if (circles.get(j).distance(circles.get(i)) <= seeRadius) {
+                    circles.get(j).setDirectionX(xAverage * 1 + circles.get(j).getXDirection());
+                    circles.get(j).setDirectionY(yAverage * 1 + circles.get(j).getYDirection());
+                    int dX = posXAverage - circles.get(j).getXY().x;
+                    int dY = posYAverage - circles.get(j).getXY().y;
+                    circles.get(j).setDirectionX(dX + circles.get(j).getXDirection());
+                    circles.get(j).setDirectionY(dY + circles.get(j).getYDirection());
+                    System.out.println(posXAverage + " " + posYAverage + " " + dX + " " + dY);
+                }
+            }
         }
-       /*for (int i = 0; i < count; i++) {
-            for (int j = i + 1; j < count; j++) {
-                if (circles.get(i).setDirectionX(circles.get(j))) {
-
-                }*/
 
     }
 }
