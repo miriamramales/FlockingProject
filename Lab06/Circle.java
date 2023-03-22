@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /** Circle for drawing in a JFrame
@@ -164,16 +165,36 @@ public class Circle extends JPanel {
         this.radius = radius;
     }
 
-    public void setDirectionY(int d){
-        this.direction.y = d;
+    public void setDirectionY(double d){
+        this.direction.y = (int)d;
     }
 
-    public void setDirectionX(int d){
-        this.direction.x = d;
+    public void setDirectionX(double d){
+        this.direction.x = (int)d;
     }
 
     public void setColor(Color color){
         this.color = color;
+    }
+
+    public double getXDirection(){
+        return this.direction.x;
+    }
+
+    public double getYDirection(){
+        return this.direction.y;
+    }
+
+    public ArrayList<Circle> getNeighbors(ArrayList <Circle> circles, float seeRadius){
+        ArrayList <Circle> neighbors = new ArrayList<>();
+        for(Circle other : circles){
+            if(other != this){
+                if(distance(other) <= seeRadius){
+                    neighbors.add(other);
+                }
+            }
+        }
+        return neighbors;
     }
 
 }
