@@ -29,6 +29,8 @@ public class CircleModel extends Thread {
 
     private int seeRadius;
 
+    private double desiredSeperation = 2;
+
     /** Default constructor. */
     public CircleModel() {
         // All circels that might appear in the graphics window are created, but are not
@@ -45,7 +47,9 @@ public class CircleModel extends Thread {
             // Move things only if the simulation is not paused
             if (!paused) {
                 advanceCircles();
-                checkOverlap();
+                averagePosition();
+                averageDirection();
+                //seperation();
                 simulation.getContentPane().repaint();
                 AveragePosition();
                 AverageDirection();
@@ -162,7 +166,7 @@ public class CircleModel extends Thread {
 
 
     /** Calculates the average position of the circles */
-    public void AveragePosition(){
+    public void averagePosition(){
         int xAverage;
         int yAverage;
         int sumX = 0;
@@ -178,14 +182,14 @@ public class CircleModel extends Thread {
             double changeX = circles.get(j).getXY().x - xAverage;
             double changeY = circles.get(j).getXY().y - yAverage;
             double hyp = Math.pow((Math.pow(changeX,2) + Math.pow(changeY, 2)), 0.5);
-            circles.get(j).setDirectionX((int)(circles.get(j).getDirectionX() + hyp));
-            circles.get(j).setDirectionY((int)(circles.get(j).getDirectionY() + hyp));
+            circles.get(j).setDirectionX((circles.get(j).getXDirection() + hyp));
+            circles.get(j).setDirectionY((circles.get(j).getYDirection() + hyp));
 
         }
 
     }
 
-    public void AverageDirection() {
+    public void averageDirection() {
         int xAverage;
         int yAverage;
         int posXAverage;
@@ -219,6 +223,25 @@ public class CircleModel extends Thread {
             for (int j = i + 1; j < count; j++) {
                 if (circles.get(i).setDirectionX(circles.get(j))) {
                 }*/
+    }
 
-}
+    public void seperation(){
+        
+        double moveX;
+        double moveY;
+
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < count; j++){
+                if ((circles.get(i).distance(circles.get(j))) <= desiredSeperation){
+                    moveX = circles.get(i).getX() - circles.get(j).getX();
+                    moveY = circles.get(i).getY() - circles.get(j).getY();
+                    circles.get(i).setDirectionX(circles.get(i).getXDirection() + moveX);
+                    circles.get(i).setDirectionY(circles.get(i).getYDirection() + moveY);
+                }
+            }
+        }
+
+    }
+
+    
 }
